@@ -11,6 +11,3 @@ Animations::~Animations()
 {
 }
 
-void Animations::playerAnimation()
-{
-}

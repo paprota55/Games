@@ -4,7 +4,7 @@
 
 Character::Character():rectSourceSprite(0, 0, 48, 48), sprite(texture, rectSourceSprite),clock()
 {
-	texture.loadFromFile("outfits/sth.png");
+	texture.loadFromFile("outfits/1.png");
 	moveSpeed = 5.0f;
 	animationSpeed = 0.05f;
 	texture.setSmooth(true);
