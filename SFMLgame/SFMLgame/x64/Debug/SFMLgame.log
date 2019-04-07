@@ -1,2 +1,12 @@
-﻿  main.cpp
-  SFMLgame.vcxproj -> C:\Users\Admin\source\repos\SFMLgame\x64\Debug\SFMLgame.exe
+﻿  Character.cpp
+  DisplayWindow.cpp
+d:\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(3): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+  Game.cpp
+  main.cpp
+  Map.cpp
+  Menu.cpp
+  Skills.cpp
+  Statistics.cpp
+  Generowanie kodu...
+D:\Visual\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(423,5): warning MSB8015: Nie wszystkie pliki źródłowe nie są aktualne — wymuszanie ponownej kompilacji wszystkich plików źródłowych ze względu na nieprawidłową zawartość dziennika „D:\Games-repo\Games\SFMLgame\SFMLgame\x64\Debug\SFMLgame.tlog\CL.command.1.tlog”.
+  SFMLgame.vcxproj -> D:\Games-repo\Games\SFMLgame\x64\Debug\SFMLgame.exe
