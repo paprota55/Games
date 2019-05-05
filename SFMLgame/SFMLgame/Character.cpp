@@ -8,8 +8,8 @@ Character::Character():rectSourceSprite(0, 0, 48, 48), sprite(texture, rectSourc
 	moveSpeed = 5.0f;
 	animationSpeed = 0.05f;
 	texture.setSmooth(true);
+	sprite.setOrigin(sprite.getOrigin() / 2.0f);
 }
-
 
 Character::~Character()
 {
@@ -17,22 +17,24 @@ Character::~Character()
 
 void Character::animation()
 {
+	int size = 48;
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { rectSourceSprite.top = 144; rotation = 1; }
+		rectSourceSprite.left = size;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { rectSourceSprite.top = 3*size; rotation = 1; }
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { rectSourceSprite.top = 0; rotation = 2; }
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { rectSourceSprite.top = 48; rotation = 3; }
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { rectSourceSprite.top = 96; rotation = 4; }
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { rectSourceSprite.top = size; rotation = 3; }
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { rectSourceSprite.top = 2*size; rotation = 4; }
 	}
 	else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-			rectSourceSprite.top = 144;
+			rectSourceSprite.top = 3*size;
 			rotation = 1;
 			if (clock.getElapsedTime().asSeconds() > animationSpeed)
 			{
-				rectSourceSprite.left += 48;
+				rectSourceSprite.left += size;
 				clock.restart();
-				if (rectSourceSprite.left >= 144)
+				if (rectSourceSprite.left >= 3*size)
 				{
 					rectSourceSprite.left = 0;
 				}
@@ -44,9 +46,9 @@ void Character::animation()
 			rectSourceSprite.top = 0;
 			if (clock.getElapsedTime().asSeconds() > animationSpeed)
 			{
-				rectSourceSprite.left += 48;
+				rectSourceSprite.left += size;
 				clock.restart();
-				if (rectSourceSprite.left >= 144)
+				if (rectSourceSprite.left >= 3*size)
 				{
 					rectSourceSprite.left = 0;
 				}
@@ -54,13 +56,13 @@ void Character::animation()
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			rectSourceSprite.top = 48;
+			rectSourceSprite.top = size;
 			rotation = 4;
 			if (clock.getElapsedTime().asSeconds() > animationSpeed)
 			{
-				rectSourceSprite.left += 48;
+				rectSourceSprite.left += size;
 				clock.restart();
-				if (rectSourceSprite.left >= 144)
+				if (rectSourceSprite.left >= 3*size)
 				{
 					rectSourceSprite.left = 0;
 				}
@@ -68,13 +70,13 @@ void Character::animation()
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			rectSourceSprite.top = 96;
+			rectSourceSprite.top = 2*size;
 			rotation = 2;
 			if (clock.getElapsedTime().asSeconds() > animationSpeed)
 			{
-				rectSourceSprite.left += 48;
+				rectSourceSprite.left += size;
 				clock.restart();
-				if (rectSourceSprite.left >= 144)
+				if (rectSourceSprite.left >= 3*size)
 				{
 					rectSourceSprite.left = 0;
 				}
@@ -82,7 +84,7 @@ void Character::animation()
 		}
 		else
 		{
-			rectSourceSprite.left = 48;
+			rectSourceSprite.left = size;
 		}
 	}
 	sprite.setTextureRect(rectSourceSprite);
@@ -116,3 +118,10 @@ void Character::move()
 		}
 	}
 }
+
+sf::Vector2f Character::getPosition()
+{
+	return sprite.getPosition();
+}
+
+

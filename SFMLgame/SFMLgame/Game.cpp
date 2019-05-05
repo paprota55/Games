@@ -5,7 +5,6 @@
 
 Game::Game() :window()
 {
-	
 }
 
 
@@ -25,8 +24,8 @@ void Game::loop()
 		}
 
 		character.move();
-		std::cout << character.getSprite().getPosition().x << " " << character.getSprite().getPosition().y << std::endl;
 		character.animation();
+		window.setViewCenter(character.getPosition());
 		window.getWindow().clear();
 		window.getWindow().draw(map.getMap());
 		window.getWindow().draw(character.getSprite());

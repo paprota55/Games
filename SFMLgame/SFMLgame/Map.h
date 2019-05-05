@@ -12,7 +12,7 @@ public:
 	Map();
 	~Map();
 
-	void changeMap();
+	void changeMap(std::string x);
 
 	sf::Sprite& getMap();
 };

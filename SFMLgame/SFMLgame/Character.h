@@ -1,5 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
+#include"Statistics.h"
+#include"Animations.h"
 class Character
 {
 	sf::Texture texture;
@@ -11,6 +13,7 @@ class Character
 
 	float moveSpeed;
 	float animationSpeed;
+	Statistics stats;
 
 public:
 	Character();
@@ -22,5 +25,6 @@ public:
 
 	//movement logic
 	void move();
+	sf::Vector2f getPosition();
 };
 

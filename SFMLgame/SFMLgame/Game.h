@@ -9,7 +9,6 @@ class Game
 	sf::Event event;
 	Character character;
 	Map map;
-	Animations animation;
 public:
 	
 	Game();
