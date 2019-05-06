@@ -1,19 +1,19 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include<vector>
+#include"MapElement.h"
+#include"DataManager.h"
+
 class Map
 {
-	sf::Texture texture;
-	sf::Sprite sprite;
-	sf::IntRect rectSourceSprite;
-
-	float width, height;
-
+public:
+	std::vector<MapElement*> elements;
+	MapElement element;
+	int size;
 public:
 	Map();
 	~Map();
 
-	void changeMap(std::string x);
-
-	sf::Sprite& getMap();
+	void createMap();
+	void drawMap(sf::RenderWindow &window);
 };
 

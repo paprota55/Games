@@ -26,5 +26,8 @@ public:
 	//movement logic
 	void move();
 	sf::Vector2f getPosition();
+
+	//drawing
+	void drawCharacter(sf::RenderWindow &window);
 };
 

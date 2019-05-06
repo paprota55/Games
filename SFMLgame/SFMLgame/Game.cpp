@@ -5,6 +5,7 @@
 
 Game::Game() :window()
 {
+
 }
 
 
@@ -14,6 +15,7 @@ Game::~Game()
 
 void Game::loop()
 {
+	map.createMap();
 	int skillAvailable = 0;
 	while (window.getWindow().isOpen())
 	{
@@ -27,8 +29,8 @@ void Game::loop()
 		character.animation();
 		window.setViewCenter(character.getPosition());
 		window.getWindow().clear();
-		window.getWindow().draw(map.getMap());
-		window.getWindow().draw(character.getSprite());
+		map.drawMap(window.getWindow());
+		character.drawCharacter(window.getWindow());
 		window.getWindow().display();
 	}
 }

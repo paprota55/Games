@@ -1,10 +1,11 @@
 #include "Character.h"
+#include<iostream>
 
-
-
-Character::Character():rectSourceSprite(0, 0, 48, 48), sprite(texture, rectSourceSprite),clock()
+Character::Character():rectSourceSprite(0, 0, 48, 48), clock()
 {
 	texture.loadFromFile("outfits/1.png");
+	sprite.setTexture(texture);
+	sprite.setTextureRect(rectSourceSprite);
 	moveSpeed = 5.0f;
 	animationSpeed = 0.05f;
 	texture.setSmooth(true);
@@ -122,6 +123,12 @@ void Character::move()
 sf::Vector2f Character::getPosition()
 {
 	return sprite.getPosition();
+}
+
+void Character::drawCharacter(sf::RenderWindow & window)
+{
+	std::cout << sprite.getPosition().x << " " << sprite.getPosition().y << std::endl;
+	window.draw(sprite);
 }
 
 

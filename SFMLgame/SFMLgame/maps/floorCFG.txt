@@ -1,0 +1,4 @@
+700
+700
+8
+maps/greenFloor.png
