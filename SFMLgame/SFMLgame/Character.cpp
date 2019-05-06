@@ -1,13 +1,14 @@
 #include "Character.h"
-#include<iostream>
 
-Character::Character():rectSourceSprite(0, 0, 48, 48), clock()
+Character::Character(): clock()
 {
-	texture.loadFromFile("outfits/1.png");
+	DataManager manager;
+	manager.outfitCFG(texture, rectSourceSprite, moveSpeed);
+	//texture.loadFromFile("outfits/1.png");
 	sprite.setTexture(texture);
 	sprite.setTextureRect(rectSourceSprite);
-	moveSpeed = 5.0f;
-	animationSpeed = 0.05f;
+	//moveSpeed = 5.0f;
+	animationSpeed = moveSpeed /100.0f;
 	texture.setSmooth(true);
 	sprite.setOrigin(sprite.getOrigin() / 2.0f);
 }

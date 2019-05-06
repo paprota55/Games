@@ -2,6 +2,9 @@
 #include<SFML/Graphics.hpp>
 #include"Statistics.h"
 #include"Animations.h"
+#include<iostream>
+#include"DataManager.h"
+
 class Character
 {
 	sf::Texture texture;
