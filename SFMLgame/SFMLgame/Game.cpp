@@ -16,12 +16,13 @@ Game::~Game()
 void Game::loop()
 {
 	map.createMap();
-	int skillAvailable = 0;
 	while (window.getWindow().isOpen())
 	{
 		while (window.getWindow().pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+				window.getWindow().close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.getWindow().close();
 		}
 
