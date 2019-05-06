@@ -15,5 +15,6 @@ public:
 	sf::RenderWindow & getWindow();
 	void setViewCenter(sf::Vector2f newPosition);
 	sf::Vector2f setMapRange(sf::Vector2f);
+	void updateViewRange(sf::Vector2f &oldPosition, int &tmpW, int &tmpH, int &width, int &height);
 };
 
