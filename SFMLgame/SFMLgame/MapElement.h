@@ -11,6 +11,7 @@ public:
 public:
 	MapElement();
 	MapElement(std::string textureName, sf::IntRect rectSize);
+	MapElement(std::string textureName, sf::IntRect rectSize, sf::Vector2f spritePosition);
 	~MapElement();
 
 	sf::Sprite & getElement();
