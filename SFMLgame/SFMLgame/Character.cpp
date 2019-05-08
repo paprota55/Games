@@ -4,10 +4,8 @@ Character::Character(): clock()
 {
 	DataManager manager;
 	manager.outfitCFG(texture, rectSourceSprite, moveSpeed);
-	//texture.loadFromFile("outfits/1.png");
 	sprite.setTexture(texture);
 	sprite.setTextureRect(rectSourceSprite);
-	//moveSpeed = 5.0f;
 	animationSpeed = moveSpeed /100.0f;
 	texture.setSmooth(true);
 	sprite.setOrigin(sprite.getOrigin() / 2.0f);
