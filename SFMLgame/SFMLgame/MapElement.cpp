@@ -28,12 +28,10 @@ MapElement::~MapElement()
 sf::Sprite & MapElement::getElement()
 {
 	return sprite;
-	// TODO: insert return statement here
 }
 
 void MapElement::drawElement(sf::RenderWindow &window)
 {
-	//std::cout << sprite.getPosition().x << " " << sprite.getPosition().y << std::endl;
 	window.draw(sprite);
 }
 
