@@ -1,4 +1,4 @@
-700
-700
+640
+640
 8
-maps/greenFloor.png
+maps/grass.png

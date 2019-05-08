@@ -1,3 +1,10 @@
-﻿  DisplayWindow.cpp
-c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(4): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+﻿  Game.cpp
+  Map.cpp
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\map.cpp(28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\map.cpp(42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   SFMLgame.vcxproj -> C:\Users\Admin\Desktop\Games-Repo\Games\SFMLgame\x64\Debug\SFMLgame.exe
