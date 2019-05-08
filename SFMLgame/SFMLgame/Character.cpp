@@ -110,13 +110,13 @@ void Character::move()
 		{
 			sprite.move(0.0f, moveSpeed);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			sprite.move(moveSpeed, 0.0f);
-		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			sprite.move(-moveSpeed, 0.0f);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			sprite.move(moveSpeed, 0.0f);
 		}
 	}
 }
@@ -128,7 +128,6 @@ sf::Vector2f Character::getPosition()
 
 void Character::drawCharacter(sf::RenderWindow & window)
 {
-	std::cout << sprite.getPosition().x << " " << sprite.getPosition().y << std::endl;
 	window.draw(sprite);
 }
 
