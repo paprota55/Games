@@ -24,6 +24,8 @@ void Game::loop()
 				window.getWindow().close();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.getWindow().close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+				map.Delete();
 		}
 
 		character.move();
