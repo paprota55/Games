@@ -18,6 +18,6 @@ public:
 	void drawMap(sf::RenderWindow &window);
 	void renderFloor(std::string & floorName, int &height, int &width, int& size);
 	void createObjects(std::vector<MapElement*>& objectList);
-	void Delete();
+	void update();
 };
 

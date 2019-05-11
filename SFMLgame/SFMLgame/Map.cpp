@@ -9,6 +9,8 @@ Map::Map()
 Map::~Map()
 {
 	elements.erase(elements.begin(), elements.end());
+	walkableElements.erase(walkableElements.begin(), walkableElements.end());
+	protectedElements.erase(protectedElements.begin(), protectedElements.end());
 }
 
 void Map::createMap()
@@ -18,7 +20,7 @@ void Map::createMap()
 	std::string floorName;
 	manager.mapFloorCfg(floorName, height, width, size);
 	renderFloor(floorName, height, width, size);	
-	manager.loadObjects(walkableElements);
+	manager.loadObjects(walkableElements,protectedElements);
 }
 
 void Map::drawMap(sf::RenderWindow &window)
@@ -28,7 +30,9 @@ void Map::drawMap(sf::RenderWindow &window)
 	int _size = walkableElements.size();
 	for(int i = 0; i<_size;i++)
 		walkableElements[i]->drawElement(window);
-		
+	_size = protectedElements.size();
+	for (int i = 0; i < _size; i++)
+		protectedElements[i]->drawElement(window);
 }
 
 void Map::renderFloor(std::string & floorName, int & height, int & width, int & size)
@@ -47,11 +51,12 @@ void Map::renderFloor(std::string & floorName, int & height, int & width, int & 
 	}
 }
 
-void Map::Delete()
+void Map::update()
 {
 	DataManager manager;
 	walkableElements.erase(walkableElements.begin(), walkableElements.end());
-	manager.loadObjects(walkableElements);
+	protectedElements.erase(protectedElements.begin(), protectedElements.end());
+	manager.loadObjects(walkableElements,protectedElements);
 }
 
 
