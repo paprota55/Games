@@ -46,13 +46,13 @@ void DataManager::outfitCFG(sf::Texture & texture, sf::IntRect & rectangle, floa
 	file.close();
 }
 
-void DataManager::loadObjects(std::vector<MapElement*>& objects)
+void DataManager::loadObjects(std::vector<MapElement*>& objectsUnprotected, std::vector<MapElement*>& objectsProtected)
 {
 	std::fstream file;
 	file.open(objectsTxt);
 	std::string textureName;
 	sf::IntRect objectRect;
-	int posX, posY, touchable;
+	int posX, posY, _protected;
 	if (file.is_open())
 	{
 		while (!file.eof())
@@ -62,8 +62,11 @@ void DataManager::loadObjects(std::vector<MapElement*>& objects)
 			file >> objectRect.top;
 			file >> objectRect.width;
 			file >> objectRect.height;
-			file >> posX >> posY;
-			objects.push_back(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
+			file >> posX >> posY >> _protected;
+			if(_protected == 0)
+				objectsUnprotected.push_back(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
+			else if(_protected == 1)
+				objectsProtected.push_back(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
 		}
 	}
 	file.close();
