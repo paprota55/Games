@@ -32,5 +32,7 @@ public:
 
 	//drawing
 	void drawCharacter(sf::RenderWindow &window);
+
+	void update();
 };
 

@@ -129,4 +129,15 @@ void Character::drawCharacter(sf::RenderWindow & window)
 	window.draw(sprite);
 }
 
+void Character::update()
+{
+	DataManager manager;
+	manager.outfitCFG(texture, rectSourceSprite, moveSpeed);
+	sprite.setTexture(texture);
+	sprite.setTextureRect(rectSourceSprite);
+	animationSpeed = moveSpeed / 100.0f;
+	texture.setSmooth(true);
+	sprite.setOrigin(sprite.getOrigin() / 2.0f);
+}
+
 
