@@ -25,7 +25,10 @@ void Game::loop()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.getWindow().close();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-				map.Delete();
+			{
+				map.update();
+				character.update();
+			}
 		}
 
 		character.move();
