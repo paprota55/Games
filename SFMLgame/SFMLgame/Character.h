@@ -5,6 +5,7 @@
 #include<iostream>
 #include"DataManager.h"
 
+
 class Character
 {
 	sf::Texture texture;
@@ -27,12 +28,15 @@ public:
 	sf::Sprite& getSprite();
 
 	//movement logic
-	void move();
+	void move(std::vector<MapElement*>);
 	sf::Vector2f getPosition();
 
 	//drawing
 	void drawCharacter(sf::RenderWindow &window);
+	void drawCoordinates(sf::RenderWindow &window);
 
 	void update();
+
+	bool collision(std::vector<MapElement*>);
 };
 

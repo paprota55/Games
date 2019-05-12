@@ -90,31 +90,38 @@ void Character::animation()
 	sprite.setTextureRect(rectSourceSprite);
 }
 
-
 sf::Sprite & Character::getSprite()
 {
 	return sprite;
 }
 
-void Character::move()
+void Character::move(std::vector<MapElement*>elements)
 {
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {}
 	else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			sprite.move(0.0f, -moveSpeed);
+			if(collision(elements))
+				sprite.move(0.0f, moveSpeed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			sprite.move(0.0f, moveSpeed);
+			if (collision(elements))
+				sprite.move(0.0f, -moveSpeed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			sprite.move(-moveSpeed, 0.0f);
+			if (collision(elements))
+				sprite.move(moveSpeed, 0.0f);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			sprite.move(moveSpeed, 0.0f);
+			if (collision(elements))
+				sprite.move(-moveSpeed, 0.0f);
 		}
 	}
 }
@@ -127,6 +134,12 @@ sf::Vector2f Character::getPosition()
 void Character::drawCharacter(sf::RenderWindow & window)
 {
 	window.draw(sprite);
+	drawCoordinates(window);
+}
+
+void Character::drawCoordinates(sf::RenderWindow & window)
+{
+
 }
 
 void Character::update()
@@ -138,6 +151,18 @@ void Character::update()
 	animationSpeed = moveSpeed / 100.0f;
 	texture.setSmooth(true);
 	sprite.setOrigin(sprite.getOrigin() / 2.0f);
+}
+
+bool Character::collision(std::vector<MapElement*> elements)
+{
+	int _size = elements.size();
+
+	for (int i = 0; i < _size; i++)
+	{
+		if (sprite.getGlobalBounds().intersects(elements[i]->sprite.getGlobalBounds()))
+			return true;
+	}
+	return false;
 }
 
 
