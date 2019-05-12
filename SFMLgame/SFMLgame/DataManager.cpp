@@ -4,7 +4,7 @@
 
 DataManager::DataManager()
 {
-	objectsTxt = "object/objectCFG.txt";
+	objectsTxt = "objects/objectCFG.txt";
 	mapNameTxt = "maps/floorCFG.txt";
 	outfitsTxt = "outfits/outfitCFG.txt";
 }
@@ -52,7 +52,7 @@ void DataManager::loadObjects(std::vector<MapElement*>& objectsUnprotected, std:
 	file.open(objectsTxt);
 	std::string textureName;
 	sf::IntRect objectRect;
-	int posX, posY, _protected;
+	int posX, posY, _protected, rotation;
 	if (file.is_open())
 	{
 		while (!file.eof())
@@ -62,11 +62,17 @@ void DataManager::loadObjects(std::vector<MapElement*>& objectsUnprotected, std:
 			file >> objectRect.top;
 			file >> objectRect.width;
 			file >> objectRect.height;
-			file >> posX >> posY >> _protected;
-			if(_protected == 0)
-				objectsUnprotected.push_back(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
-			else if(_protected == 1)
-				objectsProtected.push_back(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
+			file >> posX >> posY >> rotation >> _protected;
+			if (_protected == 0)
+			{
+				objectsUnprotected.insert(objectsUnprotected.begin(),new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
+				objectsUnprotected.front()->sprite.setRotation(rotation);
+			}
+			else if (_protected == 1)
+			{
+				objectsProtected.insert(objectsProtected.begin(), new MapElement(textureName, objectRect, sf::Vector2f(posX, posY)));
+				objectsProtected.front()->sprite.setRotation(rotation);
+			}
 		}
 	}
 	file.close();
