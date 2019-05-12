@@ -5,7 +5,6 @@
 
 class Map
 {
-public:
 	std::vector<MapElement*> elements;
 	std::vector<MapElement*> walkableElements;
 	std::vector<MapElement*> protectedElements;
@@ -19,5 +18,6 @@ public:
 	void renderFloor(std::string & floorName, int &height, int &width, int& size);
 	void createObjects(std::vector<MapElement*>& objectList);
 	void update();
+	std::vector<MapElement*> getProtectedElements();
 };
 

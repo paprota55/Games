@@ -59,5 +59,10 @@ void Map::update()
 	manager.loadObjects(walkableElements,protectedElements);
 }
 
+std::vector<MapElement*> Map::getProtectedElements()
+{
+	return protectedElements;
+}
+
 
 
