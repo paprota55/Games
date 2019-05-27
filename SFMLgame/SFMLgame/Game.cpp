@@ -31,7 +31,7 @@ void Game::loop()
 			}
 		}
 
-		character.move();
+		character.move(map.getProtectedElements());
 		character.animation();
 		window.setViewCenter(character.getPosition());
 		window.getWindow().clear();

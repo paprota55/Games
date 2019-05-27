@@ -1,0 +1,1 @@
+Lokalizacja pocz¹tek_obrazu(szerokoœæ) pocz¹tek_obrazu(wysokoœæ) jak_szeroki_obszar_od_poczatku jak_wysoki_obszar_od_poczatku czy_mo¿na_chodziæ_po_obiekcie(1 = nie, 0 = tak)
