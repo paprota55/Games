@@ -1,13 +1,8 @@
 #include "Game.h"
-#include<iostream>
-
-
 
 Game::Game() :window()
 {
-
 }
-
 
 Game::~Game()
 {
@@ -15,19 +10,28 @@ Game::~Game()
 
 void Game::loop()
 {
-	map.createMap();
+	DataManager manager;
+	manager.loadMap(map);
+	manager.loadCharacter(character);
+
 	while (window.getWindow().isOpen())
 	{
 		while (window.getWindow().pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+			{
 				window.getWindow().close();
+				manager.saveCharacter(character);
+			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
 				window.getWindow().close();
+				manager.saveCharacter(character);
+			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 			{
-				map.update();
-				character.update();
+				manager.loadMap(map);
+				manager.loadCharacter(character);
 			}
 		}
 

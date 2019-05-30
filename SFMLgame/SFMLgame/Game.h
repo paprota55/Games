@@ -1,8 +1,7 @@
 #pragma once
 #include "DisplayWindow.h"
-#include "Character.h"
-#include "Map.h"
-#include "Animations.h"
+#include"DataManager.h"
+#include<iostream>
 
 class Game
 {
