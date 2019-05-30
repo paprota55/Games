@@ -1,23 +1,24 @@
 #pragma once
 #include<vector>
 #include"MapElement.h"
-#include"DataManager.h"
 
 class Map
 {
-	std::vector<MapElement*> elements;
-	std::vector<MapElement*> walkableElements;
-	std::vector<MapElement*> protectedElements;
+	MapElement brick;
+	std::vector<std::shared_ptr<MapElement>> walkableElements;
+	std::vector<std::shared_ptr<MapElement>> protectedElements;
 	int size;
 public:
 	Map();
 	~Map();
 
-	void createMap();
 	void drawMap(sf::RenderWindow &window);
-	void renderFloor(std::string & floorName, int &height, int &width, int& size);
-	void createObjects(std::vector<MapElement*>& objectList);
-	void update();
-	std::vector<MapElement*> getProtectedElements();
+	void setFloor(std::string & floorName, int &height, int &width, int& size);
+	void createMapFrame(std::vector<std::shared_ptr<MapElement>>& objectList);
+	void drawObjectsFromList(std::vector<std::shared_ptr<MapElement>>& objectList, sf::RenderWindow & window);
+	void drawFloor(sf::RenderWindow &window);
+	std::vector<std::shared_ptr<MapElement>> & getProtectedElements();
+	std::vector<std::shared_ptr<MapElement>> & getUnProtectedElements();
+	int & getSize();
 };
 
