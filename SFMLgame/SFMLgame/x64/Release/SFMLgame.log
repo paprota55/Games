@@ -1,4 +1,0 @@
-﻿  Game.cpp
-  main.cpp
-Game.obj : error LNK2001: unresolved external symbol "public: __cdecl Character::Character(void)" (??0Character@@QEAA@XZ)
-C:\Users\Admin\Desktop\Games-Repo\Games\SFMLgame\x64\Release\Fantasy World.exe : fatal error LNK1120: 1 unresolved externals
