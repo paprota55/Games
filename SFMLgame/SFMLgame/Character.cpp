@@ -1,22 +1,26 @@
 #include "Character.h"
 
-Character::Character(): clock()
+Character::Character()
 {
-	DataManager manager;
-	manager.outfitCFG(texture, rectSourceSprite, moveSpeed);
-	sprite.setTexture(texture);
-	sprite.setTextureRect(rectSourceSprite);
-	animationSpeed = moveSpeed /100.0f;
-	texture.setSmooth(true);
-	sprite.setOrigin(sprite.getOrigin() / 2.0f);
 }
 
 Character::~Character()
 {
 }
 
+sf::IntRect & Character::getRect()
+{
+	return rectSourceSprite;
+}
+
+sf::Texture & Character::getTexture()
+{
+	return texture;
+}
+
 void Character::animation()
 {
+	float animationSpeed = moveSpeed / 100.0f;
 	int size = 48;
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {
 		rectSourceSprite.left = size;
@@ -95,7 +99,27 @@ sf::Sprite & Character::getSprite()
 	return sprite;
 }
 
-void Character::move(std::vector<MapElement*>elements)
+Statistics & Character::getStats()
+{
+	return stats;
+}
+
+float & Character::getSpeed()
+{
+	return moveSpeed;
+}
+
+std::string & Character::getName()
+{
+	return textureName;
+}
+
+void Character::setTextureName(std::string &name)
+{
+	textureName = name;
+}
+
+void Character::move(std::vector<std::shared_ptr<MapElement>>elements)
 {
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {}
 	else {
@@ -139,21 +163,9 @@ void Character::drawCharacter(sf::RenderWindow & window)
 
 void Character::drawCoordinates(sf::RenderWindow & window)
 {
-
 }
 
-void Character::update()
-{
-	DataManager manager;
-	manager.outfitCFG(texture, rectSourceSprite, moveSpeed);
-	sprite.setTexture(texture);
-	sprite.setTextureRect(rectSourceSprite);
-	animationSpeed = moveSpeed / 100.0f;
-	texture.setSmooth(true);
-	sprite.setOrigin(sprite.getOrigin() / 2.0f);
-}
-
-bool Character::collision(std::vector<MapElement*> elements)
+bool Character::collision(std::vector<std::shared_ptr<MapElement>> elements)
 {
 	int _size = elements.size();
 
@@ -164,5 +176,3 @@ bool Character::collision(std::vector<MapElement*> elements)
 	}
 	return false;
 }
-
-
