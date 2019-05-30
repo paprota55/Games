@@ -35,3 +35,16 @@ void MapElement::drawElement(sf::RenderWindow &window)
 	window.draw(sprite);
 }
 
+void MapElement::setElement(std::string & textureName, sf::IntRect rectSize, sf::Vector2f spritePosition)
+{
+	texture.loadFromFile(textureName);
+	sprite.setTexture(texture);
+	sprite.setTextureRect(rectSize);
+	sprite.setPosition(spritePosition);
+}
+
+void MapElement::setPosition(sf::Vector2f spritePosition)
+{
+	sprite.setPosition(spritePosition);
+}
+

@@ -16,5 +16,7 @@ public:
 
 	sf::Sprite & getElement();
 	void drawElement(sf::RenderWindow& window);
+	void setElement(std::string &textureName, sf::IntRect rectSize, sf::Vector2f spritePosition);
+	void setPosition(sf::Vector2f spritePosition);
 };
 
