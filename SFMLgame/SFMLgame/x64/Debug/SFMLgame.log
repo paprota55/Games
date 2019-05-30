@@ -1,3 +1,42 @@
-﻿  Character.cpp
-d:\games-repo\games\sfmlgame\sfmlgame\character.cpp(152): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-  SFMLgame.vcxproj -> D:\Games-repo\Games\SFMLgame\x64\Debug\SFMLgame.exe
+﻿  Animations.cpp
+  Character.cpp
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\character.cpp(172): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DataManager.cpp
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\datamanager.cpp(121): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\datamanager.cpp(122): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\datamanager.cpp(126): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\datamanager.cpp(127): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  DisplayWindow.cpp
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(4): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(51): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(55): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(59): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\games-repo\games\sfmlgame\sfmlgame\displaywindow.cpp(63): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Game.cpp
+  main.cpp
+  Generating Code...
+  SFMLgame.vcxproj -> C:\Users\Admin\Desktop\Games-Repo\Games\SFMLgame\x64\Debug\SFMLgame.exe

@@ -1,8 +1,4 @@
-﻿  Character.cpp
-d:\games-repo\games\sfmlgame\sfmlgame\character.cpp(169): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-  Trwa generowanie kodu
-  6 of 349 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  SFMLgame.vcxproj -> D:\Games-repo\Games\SFMLgame\x64\Release\Fantasy World.exe
+﻿  Game.cpp
+  main.cpp
+Game.obj : error LNK2001: unresolved external symbol "public: __cdecl Character::Character(void)" (??0Character@@QEAA@XZ)
+C:\Users\Admin\Desktop\Games-Repo\Games\SFMLgame\x64\Release\Fantasy World.exe : fatal error LNK1120: 1 unresolved externals

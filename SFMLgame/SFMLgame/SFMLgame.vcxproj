@@ -145,6 +145,7 @@
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DisplayWindow.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapElement.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DisplayWindow.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Menu.h" />

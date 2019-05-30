@@ -1,5 +1,5 @@
-objects/house2.png 15 40 265 240 500 500 0 1
-objects/house2.png 15 40 265 240 500 0 0 1
-objects/house2.png 15 40 265 240 0 500 0 1
+objects/house2.png 15 40 265 240 3000 3000 0 1
+objects/house2.png 15 40 265 240 3000 3500 0 1
+objects/house2.png 15 40 265 240 3500 3000 0 1
 objects/mienie/Bench.png 0 0 61 32 200 200 0 0
 objects/mienie/Bench.png 0 0 61 32 300 300 90 0
