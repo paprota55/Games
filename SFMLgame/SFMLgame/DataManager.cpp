@@ -6,6 +6,7 @@ DataManager::DataManager()
 	objectsTxt = "objects/objectCFG.txt";
 	mapNameTxt = "maps/floorCFG.txt";
 	characterTxt = "outfits/characterCFG.txt";
+	hudTxt = "HUD/hudCFG.txt";
 }
 
 DataManager::~DataManager()
@@ -124,6 +125,34 @@ void DataManager::loadObjects(std::vector<std::shared_ptr<MapElement>>& objectsU
 					objectsProtected.insert(objectsProtected.begin(), std::shared_ptr<MapElement>(new MapElement(textureName, objectRect, sf::Vector2f(posX, posY))));
 					objectsProtected.front()->sprite.setRotation(rotation);
 				}
+			}
+		}
+	}
+	file.close();
+}
+
+void DataManager::loadHUD(HUD &hud)
+{
+	std::fstream file;
+	std::string name;
+	sf::IntRect rectangle;
+	int posX, posY;
+
+	file.open(hudTxt);
+	if (file.good())
+	{
+		if (file.is_open())
+		{
+			while (!file.eof())
+			{
+				file >> name;
+				file >> rectangle.left;
+				file >> rectangle.top;
+				file >> rectangle.width;
+				file >> rectangle.height;
+				file >> posX >> posY;
+				hud.getHudElements().push_back(std::shared_ptr<MapElement>(new MapElement(name, rectangle, sf::Vector2f(posX, posY))));
+				hud.getCorrect().push_back(sf::Vector2f(posX, posY));
 			}
 		}
 	}

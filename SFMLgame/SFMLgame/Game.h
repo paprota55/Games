@@ -9,6 +9,7 @@ class Game
 	sf::Event event;
 	Character character;
 	Map map;
+	HUD hud;
 public:
 	
 	Game();

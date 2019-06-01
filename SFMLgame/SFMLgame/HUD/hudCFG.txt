@@ -1,0 +1,4 @@
+HUD/black_bar.png 0 0 200 30 490 490
+HUD/black_bar.png 0 0 200 30 490 455
+HUD/hp_bar.png 0 0 190 25 485 487
+HUD/mp_bar.png 0 0 190 25 485 452

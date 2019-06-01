@@ -1,7 +1,9 @@
 #pragma once
+#include"SFML/Graphics.hpp"
 class Statistics
 {
 	int health, currHp, mana,currMp,experience, experienceToNextLevel, attackSpeed, attackDmg,defense,armor;
+	sf::Clock clock;
 public:
 	Statistics();
 	~Statistics();
@@ -26,4 +28,6 @@ public:
 	void setExpToLvl(int &tmp);
 	void setCurrHp(int &tmp);
 	void setCurrMp(int &tmp);
+
+	void updateMp();
 };

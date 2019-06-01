@@ -63,3 +63,8 @@ void DisplayWindow::updateViewRange(sf::Vector2f &oldPosition, int &tmpW, int &t
 		oldPosition.y = height - tmpH- correctionH;
 	}
 }
+
+sf::Vector2f DisplayWindow::getViewPos()
+{
+	return view.getCenter();
+}
