@@ -2,17 +2,19 @@
 #include "SFML/Graphics.hpp"
 #include<Windows.h>
 #include "Character.h"
+#include"DisplayWindow.h"
 
 class StatisticsEvents
 {
 	sf::Clock clock;
 	sf::Clock manaClock;
 	sf::Clock healthClock;
+	sf::Clock addPointExhaust;
 public:
 	StatisticsEvents();
 	~StatisticsEvents();
 
-	void checkEvents(sf::RenderWindow &, Character &);
+	void checkEvents(DisplayWindow &, Character &);
 
 	void updateMp(Statistics&);
 	void updateHp(Statistics&);
@@ -20,6 +22,7 @@ public:
 	bool dead(Statistics&);
 	void updateAfterLevelUp(Statistics&);
 	void updateAfterDead(Statistics&, sf::Sprite&);
+	void addPoint(Statistics&);
 
 	void drawLevelUpOrDead(sf::RenderWindow&, std::string, sf::Vector2f);
 };

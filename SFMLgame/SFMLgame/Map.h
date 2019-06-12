@@ -1,6 +1,7 @@
 #pragma once
 #include<vector>
 #include"MapElement.h"
+#include"Monster.h"
 
 class Map
 {

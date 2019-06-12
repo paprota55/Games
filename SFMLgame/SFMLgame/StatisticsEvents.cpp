@@ -1,7 +1,6 @@
 #include "StatisticsEvents.h"
 
 
-
 StatisticsEvents::StatisticsEvents()
 {
 }
@@ -10,20 +9,23 @@ StatisticsEvents::~StatisticsEvents()
 {
 }
 
-void StatisticsEvents::checkEvents(sf::RenderWindow &window, Character &character)
+void StatisticsEvents::checkEvents(DisplayWindow &window, Character &character)
 {
 	updateHp(character.getStats());
 	updateMp(character.getStats());
 	if (levelUp(character.getStats()))
 	{
 		updateAfterLevelUp(character.getStats());
-		drawLevelUpOrDead(window, "HUD/levelup.png",character.getPosition());
+		window.setViewCenter(character.getPosition());
+		drawLevelUpOrDead(window.getWindow(), "HUD/levelup.png",character.getPosition());
 	}
 	else if (dead(character.getStats()))
 	{
 		updateAfterDead(character.getStats(), character.getSprite());
-		drawLevelUpOrDead(window, "HUD/dead.png",character.getPosition());
+		window.setViewCenter(character.getPosition());
+		drawLevelUpOrDead(window.getWindow(), "HUD/dead.png",character.getPosition());
 	}
+	addPoint(character.getStats());
 }
 
 void StatisticsEvents::updateMp(Statistics&stats)
@@ -93,6 +95,36 @@ void StatisticsEvents::updateAfterDead(Statistics&stats,sf::Sprite &sprite)
 	if (exp < 0) exp = 0;
 	stats.setExp(exp);
 	sprite.setPosition(sf::Vector2f(3300.f, 3300.f));
+}
+
+void StatisticsEvents::addPoint(Statistics &stats)
+{
+	if (stats.getPoints() > 0 && addPointExhaust.getElapsedTime().asMilliseconds() > 200)
+	{
+		int points = stats.getPoints();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		{
+			int attackDmg = stats.getAttackDmg() + 1;
+			points--;
+			stats.setAttackDmg(attackDmg);
+			addPointExhaust.restart();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		{
+			int intelligence = stats.getIntelligence() + 1;
+			points--;
+			stats.setIntelligence(intelligence);
+			addPointExhaust.restart();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+		{
+			int armor = stats.getArmor() + 1;
+			points--;
+			stats.setArmor(armor);
+			addPointExhaust.restart();
+		}
+		stats.setPoints(points);
+	}
 }
 
 void StatisticsEvents::drawLevelUpOrDead(sf::RenderWindow &window, std::string name,sf::Vector2f position)

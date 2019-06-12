@@ -7,6 +7,8 @@ DataManager::DataManager()
 	mapNameTxt = "maps/floorCFG.txt";
 	characterTxt = "outfits/characterCFG.txt";
 	hudTxt = "HUD/hudCFG.txt";
+	correctTextPositionTxt = "Fonts/correctPos.txt";
+	monsterTxt = "monsters/monsterCFG.txt";
 }
 
 DataManager::~DataManager()
@@ -141,6 +143,7 @@ void DataManager::loadHUD(HUD &hud)
 	std::string name;
 	sf::IntRect rectangle;
 	int posX, posY;
+	
 
 	file.open(hudTxt);
 	if (file.good())
@@ -157,6 +160,54 @@ void DataManager::loadHUD(HUD &hud)
 				file >> posX >> posY;
 				hud.getHudElements().push_back(std::shared_ptr<MapElement>(new MapElement(name, rectangle, sf::Vector2f(posX, posY))));
 				hud.getCorrect().push_back(sf::Vector2f(posX, posY));
+			}
+			file.close();
+		}
+	}
+	loadTextHud(hud);
+}
+
+void DataManager::loadTextHud(HUD &hud)
+{
+	std::fstream file;
+	int posX, posY;
+
+	file.open(correctTextPositionTxt);
+
+	if (file.good())
+	{
+		if (file.is_open())
+		{
+			while (!file.eof())
+			{
+				file >> posX >> posY;
+				hud.getTextCorrect().push_back(sf::Vector2f(posX, posY));
+			}
+			file.close();
+		}
+	}
+}
+
+void DataManager::loadMonsters(std::vector<std::shared_ptr<Monster>>&monsterList)
+{
+	std::fstream file;
+	file.open(monsterTxt);
+	std::string textureName;
+	sf::IntRect objectRect;
+	int posX, posY,hp,exp,attack,follow;
+	if (file.good())
+	{
+		if (file.is_open())
+		{
+			while (!file.eof())
+			{
+				file >> textureName;
+				file >> objectRect.left;
+				file >> objectRect.top;
+				file >> objectRect.width;
+				file >> objectRect.height;
+				file >> posX >> posY >> hp >> exp >> attack >> follow;
+				monsterList.insert(monsterList.begin(), std::shared_ptr<Monster>(new Monster(textureName, objectRect, hp, exp, attack, follow, sf::Vector2f(posX, posY))));
 			}
 			file.close();
 		}
@@ -197,5 +248,5 @@ void DataManager::saveStatistics(Statistics & stats, std::fstream & file)
 	file << stats.getAttackDmg() << "\n";
 	file << stats.getIntelligence() << "\n";
 	file << stats.getArmor() << "\n";
-	file << stats.getPoints();
+	file << stats.getPoints() << "\n";
 }

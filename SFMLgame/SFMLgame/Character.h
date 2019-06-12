@@ -4,6 +4,8 @@
 #include"Animations.h"
 #include<iostream>
 #include"Map.h"
+#include"Skills.h"
+#include"Monster.h"
 
 
 class Character
@@ -16,6 +18,7 @@ class Character
 
 	int rotation;
 	Statistics stats;
+	Skills skills;
 
 public:
 	Character();
@@ -26,19 +29,22 @@ public:
 	sf::Sprite & getSprite();
 	Statistics & getStats();
 	std::string & getName();
+	int & getRotation();
+	sf::Clock & getClock();
 
 	void setTextureName(std::string &);
+	void checkSkills();
 
 	//animations
 	void animation();
 
 	//movement logic
-	void move(std::vector<std::shared_ptr<MapElement>>);
+	void move(std::vector<std::shared_ptr<MapElement>>, std::vector<std::shared_ptr<Monster>>);
 	sf::Vector2f getPosition();
 
 	//drawing
 	void drawCharacter(sf::RenderWindow &window);
 	void drawCoordinates(sf::RenderWindow &window);
 
-	bool collision(std::vector<std::shared_ptr<MapElement>>);
+	bool collision(std::vector<std::shared_ptr<MapElement>>, std::vector<std::shared_ptr<Monster>>);
 };

@@ -15,6 +15,7 @@ void Game::loop()
 	manager.loadCharacter(character);
 	manager.loadHUD(hud);
 	hud.createNamesVector();
+	manager.loadMonsters(monsters.getMonstersList());
 
 	while (window.getWindow().isOpen())
 	{
@@ -59,19 +60,33 @@ void Game::loop()
 				character.getStats().setCurrMp(newMp);
 			}
 		}
-		character.move(map.getProtectedElements());
-		character.animation();
+		if (monsters.getMonstersList().size() <= 1)
+		{
+			manager.loadMonsters(monsters.getMonstersList());
+		}
+		monsters.checkFollow(character.getPosition());
+		monsters.moveToCharacter(character.getPosition(),animation);
+		monsters.attackCharacter(character.getPosition(), character.getStats());
+		monsters.deadMonster();
+
+		character.move(map.getProtectedElements(),monsters.getMonstersList());
+		animation.characterMove(character.getStats(), character.getRotation(), character.getSprite());
+
 		window.setViewCenter(character.getPosition());
-		statsUpdater.checkEvents(window.getWindow(), character);
-		hud.updatePosition(window.getViewPos());
-		hud.updateHpAndMpAndExp(character.getStats());
+		statsUpdater.checkEvents(window, character);
+		hud.updateHud(character.getStats(), window.getViewPos());
+		character.checkSkills();
+
 		window.getWindow().clear();
 		map.drawMap(window.getWindow());
 		character.drawCharacter(window.getWindow());
+		monsters.drawMonsters(window.getWindow());
 		hud.drawHud(window.getWindow());
+
 		window.setMiniMapView();
 		map.drawMap(window.getWindow());
 		character.drawCharacter(window.getWindow());
+		monsters.drawMonsters(window.getWindow());
 		window.setMapView();
 		window.getWindow().display();
 	}

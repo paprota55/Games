@@ -2,19 +2,26 @@
 #include<string>
 #include<iostream>
 #include"SFML/Graphics.hpp"
+#include"Statistics.h"
 
 class Monster
 {
-	int health, currHp, exp, level, attackDmg,attackable;
+	int health, exp, attackDmg,follow;
 	std::string name;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Clock attackExhaust;
+	sf::Clock movement;
 public:
-	Monster();
+	Monster(std::string, sf::IntRect&, int&, int&, int&, int&,sf::Vector2f);
 	~Monster();
-	void move();
-	void animation();
-	void attack();
+	void attack(Statistics&);
+	bool ifAgrresive();
 	bool isAlive();
+	void drawMonster(sf::RenderWindow&);
+	sf::Vector2f getPosition();
+	sf::Sprite & getMonster();
+	void setFollow(int&);
+	sf::Clock & getClock();
 };
 

@@ -151,7 +151,10 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapElement.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonstersContainer.cpp" />
     <ClCompile Include="Skills.cpp" />
+    <ClCompile Include="SpeedUp.cpp" />
     <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="StatisticsEvents.cpp" />
   </ItemGroup>
@@ -166,7 +169,10 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonstersContainer.h" />
     <ClInclude Include="Skills.h" />
+    <ClInclude Include="SpeedUp.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="StatisticsEvents.h" />
   </ItemGroup>

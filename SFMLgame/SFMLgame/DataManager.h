@@ -11,6 +11,8 @@ class DataManager
 	std::string objectsTxt;
 	std::string characterTxt;
 	std::string hudTxt;
+	std::string correctTextPositionTxt;
+	std::string monsterTxt;
 public:
 	DataManager();
 	~DataManager();
@@ -21,6 +23,8 @@ public:
 	void loadStatistics(Statistics &, std::fstream & file);
 	void loadObjects(std::vector<std::shared_ptr<MapElement>>&, std::vector<std::shared_ptr<MapElement>>&);
 	void loadHUD(HUD &);
+	void loadTextHud(HUD &);
+	void loadMonsters(std::vector<std::shared_ptr<Monster>>&);
 
 	void saveCharacter(Character &);
 	void saveStatistics(Statistics &, std::fstream &);

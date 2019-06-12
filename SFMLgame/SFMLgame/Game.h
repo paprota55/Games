@@ -3,6 +3,8 @@
 #include"DataManager.h"
 #include"StatisticsEvents.h"
 #include<iostream>
+#include"MonstersContainer.h"
+#include "Animations.h"
 
 class Game
 {
@@ -12,6 +14,9 @@ class Game
 	Map map;
 	HUD hud;
 	StatisticsEvents statsUpdater;
+	MonstersContainer monsters;
+	Animations animation;
+
 public:
 	
 	Game();

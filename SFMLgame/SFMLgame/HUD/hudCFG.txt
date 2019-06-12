@@ -5,3 +5,8 @@ HUD/hp_bar.png 0 0 190 25 485 487
 HUD/mp_bar.png 0 0 190 25 485 452
 HUD/exp_bar.png 0 0 190 12 485 418
 HUD/podmapa.png 0 0 205 190 -295 515
+HUD/choice.png 0 0 180 69 500 390
+HUD/plus2.png 0 0 33 33 0 -100
+HUD/speed.png 0 0 33 33 50 -100
+HUD/wybuch.png 0 0 33 33 100 -100
+HUD/Blue.png 0 0 400 80 200 500

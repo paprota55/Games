@@ -18,82 +18,6 @@ sf::Texture & Character::getTexture()
 	return texture;
 }
 
-void Character::animation()
-{
-	float animationSpeed = (1/stats.getMoveSpeed()) * 0.5f;
-	int size = 48;
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {
-		rectSourceSprite.left = size;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { rectSourceSprite.top = 3*size; rotation = 1; }
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { rectSourceSprite.top = 0; rotation = 2; }
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { rectSourceSprite.top = size; rotation = 3; }
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { rectSourceSprite.top = 2*size; rotation = 4; }
-	}
-	else {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		{
-			rectSourceSprite.top = 3*size;
-			rotation = 1;
-			if (clock.getElapsedTime().asSeconds() > animationSpeed)
-			{
-				rectSourceSprite.left += size;
-				clock.restart();
-				if (rectSourceSprite.left >= 3*size)
-				{
-					rectSourceSprite.left = 0;
-				}
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			rotation = 3;
-			rectSourceSprite.top = 0;
-			if (clock.getElapsedTime().asSeconds() > animationSpeed)
-			{
-				rectSourceSprite.left += size;
-				clock.restart();
-				if (rectSourceSprite.left >= 3*size)
-				{
-					rectSourceSprite.left = 0;
-				}
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			rectSourceSprite.top = size;
-			rotation = 4;
-			if (clock.getElapsedTime().asSeconds() > animationSpeed)
-			{
-				rectSourceSprite.left += size;
-				clock.restart();
-				if (rectSourceSprite.left >= 3*size)
-				{
-					rectSourceSprite.left = 0;
-				}
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			rectSourceSprite.top = 2*size;
-			rotation = 2;
-			if (clock.getElapsedTime().asSeconds() > animationSpeed)
-			{
-				rectSourceSprite.left += size;
-				clock.restart();
-				if (rectSourceSprite.left >= 3*size)
-				{
-					rectSourceSprite.left = 0;
-				}
-			}
-		}
-		else
-		{
-			rectSourceSprite.left = size;
-		}
-	}
-	sprite.setTextureRect(rectSourceSprite);
-}
-
 sf::Sprite & Character::getSprite()
 {
 	return sprite;
@@ -109,12 +33,27 @@ std::string & Character::getName()
 	return textureName;
 }
 
+int & Character::getRotation()
+{
+	return rotation;
+}
+
+sf::Clock & Character::getClock()
+{
+	return clock;
+}
+
 void Character::setTextureName(std::string &name)
 {
 	textureName = name;
 }
 
-void Character::move(std::vector<std::shared_ptr<MapElement>>elements)
+void Character::checkSkills()
+{
+	skills.skillUpdater(stats);
+}
+
+void Character::move(std::vector<std::shared_ptr<MapElement>>elements, std::vector<std::shared_ptr<Monster>>monsterList)
 {
 	float moveSpeed = stats.getMoveSpeed();
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {}
@@ -122,25 +61,25 @@ void Character::move(std::vector<std::shared_ptr<MapElement>>elements)
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			sprite.move(0.0f, -moveSpeed);
-			if(collision(elements))
+			if(collision(elements,monsterList))
 				sprite.move(0.0f, moveSpeed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			sprite.move(0.0f, moveSpeed);
-			if (collision(elements))
+			if (collision(elements, monsterList))
 				sprite.move(0.0f, -moveSpeed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			sprite.move(-moveSpeed, 0.0f);
-			if (collision(elements))
+			if (collision(elements, monsterList))
 				sprite.move(moveSpeed, 0.0f);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			sprite.move(moveSpeed, 0.0f);
-			if (collision(elements))
+			if (collision(elements, monsterList))
 				sprite.move(-moveSpeed, 0.0f);
 		}
 	}
@@ -161,13 +100,19 @@ void Character::drawCoordinates(sf::RenderWindow & window)
 {
 }
 
-bool Character::collision(std::vector<std::shared_ptr<MapElement>> elements)
+bool Character::collision(std::vector<std::shared_ptr<MapElement>> elements, std::vector<std::shared_ptr<Monster>> monsterList)
 {
 	int _size = elements.size();
 
 	for (int i = 0; i < _size; i++)
 	{
 		if (sprite.getGlobalBounds().intersects(elements[i]->sprite.getGlobalBounds()))
+			return true;
+	}
+	_size = monsterList.size();
+	for (int i = 0; i < _size; i++)
+	{
+		if (sprite.getGlobalBounds().intersects(monsterList[i]->getMonster().getGlobalBounds()))
 			return true;
 	}
 	return false;
