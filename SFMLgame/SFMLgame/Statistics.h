@@ -1,33 +1,38 @@
 #pragma once
 #include"SFML/Graphics.hpp"
+
 class Statistics
 {
-	int health, currHp, mana,currMp,experience, experienceToNextLevel, attackSpeed, attackDmg,defense,armor;
-	sf::Clock clock;
+	int level,health, currHp, mana,currMp,experience, experienceToNextLevel, intelligence, attackDmg,armor, points;
+	float moveSpeed;
+
 public:
 	Statistics();
 	~Statistics();
+
+	int getLevel();
 	int getHealth();
 	int getMana();
 	int getExp();
-	int getAttackSpeed();
+	int getIntelligence();
 	int getAttackDmg();
-	int getDefense();
 	int getArmor();
 	int getExpToLvl();
 	int getCurrHp();
 	int getCurrMp();
+	int getPoints();
+	float getMoveSpeed();
 
+	void setLevel(int &tmp);
+	void setPoints(int &tmp);
 	void setHealth(int &tmp);
 	void setMana(int &tmp);
 	void setExp(int &tmp);
-	void setAttackSpeed(int &tmp);
+	void setIntelligence(int &tmp);
 	void setAttackDmg(int &tmp);
-	void setDefense(int &tmp);
+	void setMoveSpeed(float &tmp);
 	void setArmor(int &tmp);
 	void setExpToLvl(int &tmp);
 	void setCurrHp(int &tmp);
 	void setCurrMp(int &tmp);
-
-	void updateMp();
 };

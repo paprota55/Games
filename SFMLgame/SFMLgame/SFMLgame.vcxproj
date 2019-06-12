@@ -145,6 +145,7 @@
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DisplayWindow.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Heal.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Skills.cpp" />
     <ClCompile Include="Statistics.cpp" />
+    <ClCompile Include="StatisticsEvents.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animations.h" />
@@ -159,12 +161,14 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DisplayWindow.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Heal.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Skills.h" />
     <ClInclude Include="Statistics.h" />
+    <ClInclude Include="StatisticsEvents.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

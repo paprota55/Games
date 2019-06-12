@@ -7,6 +7,7 @@ class DisplayWindow
 	float width, height;
 	sf::RenderWindow window;
 	sf::View view;
+	sf::View miniMapView;
 
 public:
 	DisplayWindow();
@@ -17,5 +18,7 @@ public:
 	sf::Vector2f setMapRange(sf::Vector2f);
 	void updateViewRange(sf::Vector2f &oldPosition, int &tmpW, int &tmpH, int &width, int &height);
 	sf::Vector2f getViewPos();
+	void setMapView();
+	void setMiniMapView();
 };
 

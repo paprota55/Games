@@ -4,6 +4,7 @@
 DisplayWindow::DisplayWindow():width(1920),height(1080),window(sf::VideoMode(width, height), "Fantasy World", sf::Style::Fullscreen)
 {	
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(60);
 }
 
 
@@ -20,7 +21,10 @@ void DisplayWindow::setViewCenter(sf::Vector2f newPosition)
 {
 	view.setCenter(setMapRange(newPosition));
 	view.setViewport(sf::FloatRect(0, 0, 1, 1.5));
+	miniMapView = view;
 	view.move(48.f, 192.f);
+	miniMapView.setViewport(sf::FloatRect(0.8, 0, 0.20, 0.25));
+	miniMapView.zoom(1.75);
 	window.setView(view);
 }
 
@@ -67,4 +71,14 @@ void DisplayWindow::updateViewRange(sf::Vector2f &oldPosition, int &tmpW, int &t
 sf::Vector2f DisplayWindow::getViewPos()
 {
 	return view.getCenter();
+}
+
+void DisplayWindow::setMapView()
+{
+	window.setView(view);
+}
+
+void DisplayWindow::setMiniMapView()
+{
+	window.setView(miniMapView);
 }

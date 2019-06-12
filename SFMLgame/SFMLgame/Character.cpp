@@ -20,7 +20,7 @@ sf::Texture & Character::getTexture()
 
 void Character::animation()
 {
-	float animationSpeed = moveSpeed / 100.0f;
+	float animationSpeed = (1/stats.getMoveSpeed()) * 0.5f;
 	int size = 48;
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {
 		rectSourceSprite.left = size;
@@ -104,11 +104,6 @@ Statistics & Character::getStats()
 	return stats;
 }
 
-float & Character::getSpeed()
-{
-	return moveSpeed;
-}
-
 std::string & Character::getName()
 {
 	return textureName;
@@ -121,6 +116,7 @@ void Character::setTextureName(std::string &name)
 
 void Character::move(std::vector<std::shared_ptr<MapElement>>elements)
 {
+	float moveSpeed = stats.getMoveSpeed();
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {}
 	else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

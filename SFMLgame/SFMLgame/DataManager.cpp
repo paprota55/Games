@@ -35,9 +35,9 @@ void DataManager::mapFloorCfg(std::string & floorName, int & height, int & width
 			file >> width;
 			file >> size;
 			file >> floorName;
+			file.close();
 		}
 	}
-	file.close();
 }
 
 void DataManager::loadCharacter(Character & character)
@@ -57,7 +57,6 @@ void DataManager::loadCharacter(Character & character)
 			file >> character.getRect().top;
 			file >> character.getRect().width;
 			file >> character.getRect().height;
-			file >> character.getSpeed();
 			character.getSprite().setTexture(character.getTexture());
 			character.getSprite().setTextureRect(character.getRect());
 			character.getTexture().setSmooth(true);
@@ -66,34 +65,39 @@ void DataManager::loadCharacter(Character & character)
 			file >> position.y;
 			character.getSprite().setPosition(position);
 			loadStatistics(character.getStats(), file);
+			file.close();
 		}
 	}
-	file.close();
 }
 
 void DataManager::loadStatistics(Statistics & stats, std::fstream & file)
 {
 	int statsTmp;
-		file >> statsTmp;
-			stats.setHealth(statsTmp);
-			file >> statsTmp;
-			stats.setCurrHp(statsTmp);
-			file >> statsTmp;
-			stats.setMana(statsTmp);
-			file >> statsTmp;
-			stats.setCurrMp(statsTmp);
-			file >> statsTmp;
-			stats.setExpToLvl(statsTmp);
-			file >> statsTmp;
-			stats.setExp(statsTmp);
-			file >> statsTmp;
-			stats.setAttackDmg(statsTmp);
-			file >> statsTmp;
-			stats.setAttackSpeed(statsTmp);
-			file >> statsTmp;
-			stats.setArmor(statsTmp);
-			file >> statsTmp;
-			stats.setDefense(statsTmp);
+	float speed;
+	file >> speed;
+	stats.setMoveSpeed(speed);
+	file >> statsTmp;
+	stats.setLevel(statsTmp);
+	file >> statsTmp;
+	stats.setHealth(statsTmp);
+	file >> statsTmp;
+	stats.setCurrHp(statsTmp);
+	file >> statsTmp;
+	stats.setMana(statsTmp);
+	file >> statsTmp;
+	stats.setCurrMp(statsTmp);
+	file >> statsTmp;
+	stats.setExpToLvl(statsTmp);
+	file >> statsTmp;
+	stats.setExp(statsTmp);
+	file >> statsTmp;
+	stats.setAttackDmg(statsTmp);
+	file >> statsTmp;
+	stats.setIntelligence(statsTmp);
+	file >> statsTmp;
+	stats.setArmor(statsTmp);
+	file >> statsTmp;
+	stats.setPoints(statsTmp);
 }
 
 void DataManager::loadObjects(std::vector<std::shared_ptr<MapElement>>& objectsUnprotected, std::vector<std::shared_ptr<MapElement>>& objectsProtected)
@@ -126,9 +130,9 @@ void DataManager::loadObjects(std::vector<std::shared_ptr<MapElement>>& objectsU
 					objectsProtected.front()->sprite.setRotation(rotation);
 				}
 			}
+			file.close();
 		}
 	}
-	file.close();
 }
 
 void DataManager::loadHUD(HUD &hud)
@@ -154,9 +158,9 @@ void DataManager::loadHUD(HUD &hud)
 				hud.getHudElements().push_back(std::shared_ptr<MapElement>(new MapElement(name, rectangle, sf::Vector2f(posX, posY))));
 				hud.getCorrect().push_back(sf::Vector2f(posX, posY));
 			}
+			file.close();
 		}
 	}
-	file.close();
 }
 
 void DataManager::saveCharacter(Character & character)
@@ -172,7 +176,6 @@ void DataManager::saveCharacter(Character & character)
 			file << character.getRect().top << " ";
 			file << character.getRect().width << " ";
 			file << character.getRect().height << "\n";
-			file << character.getSpeed() << "\n";
 			file << character.getSprite().getPosition().x << " ";
 			file << character.getSprite().getPosition().y << "\n";
 			saveStatistics(character.getStats(), file);
@@ -183,6 +186,8 @@ void DataManager::saveCharacter(Character & character)
 
 void DataManager::saveStatistics(Statistics & stats, std::fstream & file)
 {
+	file << stats.getMoveSpeed() << "\n";
+	file << stats.getLevel() << "\n";
 	file << stats.getHealth() << " ";
 	file << stats.getCurrHp() << "\n";
 	file << stats.getMana() << " ";
@@ -190,7 +195,7 @@ void DataManager::saveStatistics(Statistics & stats, std::fstream & file)
 	file << stats.getExpToLvl() << " ";
 	file << stats.getExp() << "\n";
 	file << stats.getAttackDmg() << "\n";
-	file << stats.getAttackSpeed() << "\n";
+	file << stats.getIntelligence() << "\n";
 	file << stats.getArmor() << "\n";
-	file << stats.getDefense() << "\n";
+	file << stats.getPoints();
 }

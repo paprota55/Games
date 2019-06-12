@@ -14,6 +14,7 @@ void Game::loop()
 	manager.loadMap(map);
 	manager.loadCharacter(character);
 	manager.loadHUD(hud);
+	hud.createNamesVector();
 
 	while (window.getWindow().isOpen())
 	{
@@ -33,6 +34,8 @@ void Game::loop()
 			{
 				manager.loadMap(map);
 				manager.loadCharacter(character);
+				hud.hudClear();
+				manager.loadHUD(hud);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 			{
@@ -45,6 +48,11 @@ void Game::loop()
 				int newHp = character.getStats().getCurrHp() - 5;
 				character.getStats().setCurrHp(newHp);
 			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+			{
+				int newExp = character.getStats().getExp() + 15;
+				character.getStats().setExp(newExp);
+			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
 			{
 				int newMp = character.getStats().getCurrMp() - 5;
@@ -54,12 +62,17 @@ void Game::loop()
 		character.move(map.getProtectedElements());
 		character.animation();
 		window.setViewCenter(character.getPosition());
+		statsUpdater.checkEvents(window.getWindow(), character);
 		hud.updatePosition(window.getViewPos());
-		hud.updateHpAndMp(character.getStats());
+		hud.updateHpAndMpAndExp(character.getStats());
 		window.getWindow().clear();
 		map.drawMap(window.getWindow());
 		character.drawCharacter(window.getWindow());
 		hud.drawHud(window.getWindow());
+		window.setMiniMapView();
+		map.drawMap(window.getWindow());
+		character.drawCharacter(window.getWindow());
+		window.setMapView();
 		window.getWindow().display();
 	}
 }

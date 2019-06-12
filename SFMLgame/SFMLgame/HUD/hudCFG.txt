@@ -1,4 +1,7 @@
 HUD/black_bar.png 0 0 200 30 490 490
 HUD/black_bar.png 0 0 200 30 490 455
+HUD/black_bar.png 0 0 200 15 490 420
 HUD/hp_bar.png 0 0 190 25 485 487
 HUD/mp_bar.png 0 0 190 25 485 452
+HUD/exp_bar.png 0 0 190 12 485 418
+HUD/podmapa.png 0 0 205 190 -295 515

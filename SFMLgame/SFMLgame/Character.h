@@ -15,7 +15,6 @@ class Character
 	std::string textureName;
 
 	int rotation;
-	float moveSpeed;
 	Statistics stats;
 
 public:
@@ -26,7 +25,6 @@ public:
 	sf::Texture & getTexture();
 	sf::Sprite & getSprite();
 	Statistics & getStats();
-	float & getSpeed();
 	std::string & getName();
 
 	void setTextureName(std::string &);

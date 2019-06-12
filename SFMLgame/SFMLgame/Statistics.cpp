@@ -10,6 +10,11 @@ Statistics::~Statistics()
 {
 }
 
+int Statistics::getLevel()
+{
+	return level;
+}
+
 int Statistics::getHealth()
 {
 	return health;
@@ -25,19 +30,14 @@ int Statistics::getExp()
 	return experience;
 }
 
-int Statistics::getAttackSpeed()
+int Statistics::getIntelligence()
 {
-	return attackSpeed;
+	return intelligence;
 }
 
 int Statistics::getAttackDmg()
 {
 	return attackDmg;
-}
-
-int Statistics::getDefense()
-{
-	return defense;
 }
 
 int Statistics::getArmor()
@@ -60,6 +60,26 @@ int Statistics::getCurrMp()
 	return currMp;
 }
 
+int Statistics::getPoints()
+{
+	return points;
+}
+
+float Statistics::getMoveSpeed()
+{
+	return moveSpeed;
+}
+
+void Statistics::setLevel(int & tmp)
+{
+	level = tmp;
+}
+
+void Statistics::setPoints(int & tmp)
+{
+	points = tmp;
+}
+
 void Statistics::setHealth(int & tmp)
 {
 	health = tmp;
@@ -75,9 +95,9 @@ void Statistics::setExp(int & tmp)
 	experience = tmp;
 }
 
-void Statistics::setAttackSpeed(int & tmp)
+void Statistics::setIntelligence(int & tmp)
 {
-	attackSpeed = tmp;
+	intelligence = tmp;
 }
 
 void Statistics::setAttackDmg(int & tmp)
@@ -85,9 +105,9 @@ void Statistics::setAttackDmg(int & tmp)
 	attackDmg = tmp;
 }
 
-void Statistics::setDefense(int & tmp)
+void Statistics::setMoveSpeed(float & tmp)
 {
-	defense = tmp;
+	moveSpeed = tmp;
 }
 
 void Statistics::setArmor(int & tmp)
@@ -109,3 +129,6 @@ void Statistics::setCurrMp(int & tmp)
 {
 	currMp = tmp;
 }
+
+
+
