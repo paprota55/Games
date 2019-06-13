@@ -214,6 +214,21 @@ void DataManager::loadMonsters(std::vector<std::shared_ptr<Monster>>&monsterList
 	}
 }
 
+void DataManager::loadAll(Map &map, Character &character, HUD &hud, std::vector<std::shared_ptr<Monster>>&monsters)
+{
+	try
+	{
+		loadMap(map);
+		loadCharacter(character);
+		loadHUD(hud);
+		loadMonsters(monsters);
+	}
+	catch(std::string)
+	{
+
+	}
+}
+
 void DataManager::saveCharacter(Character & character)
 {
 	std::fstream file;

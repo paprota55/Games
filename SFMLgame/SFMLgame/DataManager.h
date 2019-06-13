@@ -25,6 +25,7 @@ public:
 	void loadHUD(HUD &);
 	void loadTextHud(HUD &);
 	void loadMonsters(std::vector<std::shared_ptr<Monster>>&);
+	void loadAll(Map&, Character &, HUD &, std::vector<std::shared_ptr<Monster>>&);
 
 	void saveCharacter(Character &);
 	void saveStatistics(Statistics &, std::fstream &);

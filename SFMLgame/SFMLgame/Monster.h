@@ -22,6 +22,8 @@ public:
 	sf::Vector2f getPosition();
 	sf::Sprite & getMonster();
 	void setFollow(int&);
+	void decreaseHp(float&);
+	int & getExp();
 	sf::Clock & getClock();
 };
 

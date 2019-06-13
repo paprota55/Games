@@ -1,10 +1,13 @@
 #pragma once
 #include "Monster.h"
 #include "Animations.h"
-#include "Statistics.h"
+#include"Skills.h"
+#include "StatisticsEvents.h"
+
 class MonstersContainer
 {
 	std::vector<std::shared_ptr<Monster>> monstersList;
+
 public:
 	MonstersContainer();
 	~MonstersContainer();
@@ -14,6 +17,7 @@ public:
 	void checkFollow(sf::Vector2f);
 	void moveToCharacter(sf::Vector2f,Animations);
 	void attackCharacter(sf::Vector2f, Statistics&);
-	void deadMonster();
+	void deadMonster(Statistics &, StatisticsEvents&);
+	void checkCollisions(Skills&, Statistics&);
 };
 

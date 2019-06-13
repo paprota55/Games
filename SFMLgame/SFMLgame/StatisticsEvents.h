@@ -23,6 +23,7 @@ public:
 	void updateAfterLevelUp(Statistics&);
 	void updateAfterDead(Statistics&, sf::Sprite&);
 	void addPoint(Statistics&);
+	void increaseExp(Statistics&, int);
 
 	void drawLevelUpOrDead(sf::RenderWindow&, std::string, sf::Vector2f);
 };

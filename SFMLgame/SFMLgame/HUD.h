@@ -29,7 +29,7 @@ public:
 	void drawDataFonts(sf::RenderWindow&);
 	void createNamesVector();
 	void setTextNames();
-	void updateHud(Statistics&, sf::Vector2f);
+	void updateHud(Statistics&, sf::Vector2f, sf::Vector2f);
 
 	void hudClear();
 };

@@ -31,12 +31,11 @@ public:
 	std::string & getName();
 	int & getRotation();
 	sf::Clock & getClock();
+	Skills & getSkills();
 
 	void setTextureName(std::string &);
 	void checkSkills();
-
-	//animations
-	void animation();
+	void drawSkills(sf::RenderWindow&);
 
 	//movement logic
 	void move(std::vector<std::shared_ptr<MapElement>>, std::vector<std::shared_ptr<Monster>>);

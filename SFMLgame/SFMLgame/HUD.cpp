@@ -152,11 +152,11 @@ void HUD::setTextNames()
 	textElements[8].setString("Y: ");
 }
 
-void HUD::updateHud(Statistics &stats, sf::Vector2f pos)
+void HUD::updateHud(Statistics &stats, sf::Vector2f pos, sf::Vector2f charPos)
 {
 	updateHpAndMpAndExp(stats);
 	updatePosition(pos);
-	updateText(stats, pos);
+	updateText(stats, charPos);
 	updateHudDrawer(stats);
 }
 

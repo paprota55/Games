@@ -21,7 +21,7 @@ void Monster::attack(Statistics &stats)
 {
 	if (attackExhaust.getElapsedTime().asSeconds() > 2)
 	{
-		int hp = stats.getCurrHp() - attackDmg;
+		int hp = stats.getCurrHp() - (attackDmg*(100-stats.getArmor())/100);
 		stats.setCurrHp(hp);
 		attackExhaust.restart();
 	}
@@ -36,7 +36,8 @@ bool Monster::ifAgrresive()
 
 bool Monster::isAlive()
 {
-	if (health <= 0) return false;
+ 	if (health <= 0) 
+		return false;
 	
 	return true;
 }
@@ -59,6 +60,16 @@ sf::Sprite & Monster::getMonster()
 void Monster::setFollow(int &tmp)
 {
 	follow = tmp;
+}
+
+void Monster::decreaseHp(float& tmp)
+{
+	health -= tmp;
+}
+
+int & Monster::getExp()
+{
+	return exp;
 }
 
 sf::Clock & Monster::getClock()

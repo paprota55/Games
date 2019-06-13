@@ -141,12 +141,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp" />
+    <ClCompile Include="AutoAttack.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DisplayWindow.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Heal.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="MagicBall.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapElement.cpp" />
@@ -160,12 +162,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animations.h" />
+    <ClInclude Include="AutoAttack.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DisplayWindow.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Heal.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="MagicBall.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapElement.h" />
     <ClInclude Include="Menu.h" />

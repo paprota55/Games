@@ -69,9 +69,9 @@ bool StatisticsEvents::dead(Statistics&stats)
 
 void StatisticsEvents::updateAfterLevelUp(Statistics&stats)
 {
-	int zero = 0;
+	int expLeft = stats.getExp() - stats.getExpToLvl();
 	int exp = stats.getExpToLvl() + stats.getExpToLvl()*0.2;
-	stats.setExp(zero);
+	stats.setExp(expLeft);
 	stats.setExpToLvl(exp);
 	int health = stats.getHealth() + stats.getHealth()*0.2;
 	stats.setHealth(health);
@@ -127,6 +127,12 @@ void StatisticsEvents::addPoint(Statistics &stats)
 	}
 }
 
+void StatisticsEvents::increaseExp(Statistics &stats,int mnstrExp)
+{
+	int currExp = stats.getExp() + mnstrExp;
+	stats.setExp(currExp);
+}
+
 void StatisticsEvents::drawLevelUpOrDead(sf::RenderWindow &window, std::string name,sf::Vector2f position)
 {
 	sf::Texture texture;
@@ -145,5 +151,5 @@ void StatisticsEvents::drawLevelUpOrDead(sf::RenderWindow &window, std::string n
 	window.clear();
 	window.draw(sprite);
 	window.display();
-	Sleep(2500);
+	Sleep(2000);
 }

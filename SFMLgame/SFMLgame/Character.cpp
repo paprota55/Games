@@ -43,6 +43,11 @@ sf::Clock & Character::getClock()
 	return clock;
 }
 
+Skills & Character::getSkills()
+{
+	return skills;
+}
+
 void Character::setTextureName(std::string &name)
 {
 	textureName = name;
@@ -50,13 +55,20 @@ void Character::setTextureName(std::string &name)
 
 void Character::checkSkills()
 {
-	skills.skillUpdater(stats);
+	skills.skillChoicer(stats,rotation,getPosition());
+	skills.skillUpdater(getPosition());
+}
+
+void Character::drawSkills(sf::RenderWindow &window)
+{
+	skills.drawSkills(window);
 }
 
 void Character::move(std::vector<std::shared_ptr<MapElement>>elements, std::vector<std::shared_ptr<Monster>>monsterList)
 {
 	float moveSpeed = stats.getMoveSpeed();
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))) {}
+
 	else {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
