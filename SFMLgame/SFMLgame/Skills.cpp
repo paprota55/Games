@@ -59,7 +59,23 @@ void Skills::skillChoicer(Statistics &stats,int rotation,sf::Vector2f position)
 			objectRect.left = 0;
 			objectRect.width = 48;
 			objectRect.height = 48;
-			std::string textureName = "spells/magicball.png";
+			std::string textureName;
+			if (rotation == 1)
+			{
+				textureName = "spells/ballup1.png";
+			}
+			else if (rotation == 2)
+			{
+				textureName = "spells/ballright1.png";
+			}
+			else if (rotation == 3)
+			{
+				textureName = "spells/balldown1.png";
+			}
+			else
+			{
+				textureName = "spells/ballleft1.png";
+			}
 			magicBallList.insert(magicBallList.begin(), std::shared_ptr<MagicBall>(new MagicBall(textureName, objectRect, position, rotation)));
 			(*magicBallList.begin())->decreaseMana(stats);
 			magicBallExhaust.restart();
