@@ -6,7 +6,6 @@ Animations::Animations()
 {
 }
 
-
 Animations::~Animations()
 {
 }
@@ -18,13 +17,14 @@ void Animations::speedUpAnim(std::vector<std::shared_ptr<SpeedUp>>&speedList)
 	for (ptr = speedList.begin(); ptr != speedList.end(); ptr++)
 	{
 		int size = 48;
+		int counter = (*ptr)->getSprite().getTexture()->getSize().x / size;
 		sf::Sprite sprite = (*ptr)->getSprite();
 		sf::IntRect rectSourceSprite = (*ptr)->getSprite().getTextureRect();
 		if (speedClock.getElapsedTime().asSeconds() > animationSpeed)
 		{
 			rectSourceSprite.left += size;
 			speedClock.restart();
-			if (rectSourceSprite.left >= 3 * size)
+			if (rectSourceSprite.left >= counter * size)
 			{
 				rectSourceSprite.left = 0;
 			}
@@ -35,18 +35,19 @@ void Animations::speedUpAnim(std::vector<std::shared_ptr<SpeedUp>>&speedList)
 
 void Animations::magicBallAnim(std::vector<std::shared_ptr<MagicBall>>&magicBallList)
 {
-	float animationSpeed = 0.05f;
+	float animationSpeed = 0.10f;
 	std::vector<std::shared_ptr<MagicBall>>::iterator ptr;
 	for (ptr = magicBallList.begin(); ptr != magicBallList.end(); ptr++)
 	{
 		int size = 48;
+		int counter = (*ptr)->getSprite().getTexture()->getSize().x / size;
 		sf::Sprite sprite = (*ptr)->getSprite();
 		sf::IntRect rectSourceSprite = (*ptr)->getSprite().getTextureRect();
 		if (magicBallClock.getElapsedTime().asSeconds() > animationSpeed)
 		{
 			rectSourceSprite.left += size;
 			magicBallClock.restart();
-			if (rectSourceSprite.left >= 4 * size)
+			if (rectSourceSprite.left >= counter * size)
 			{
 				rectSourceSprite.left = 0;
 			}
@@ -62,6 +63,7 @@ void Animations::healAnim(std::vector<std::shared_ptr<Heal>>&healList)
 	for (ptr = healList.begin(); ptr != healList.end(); ptr++)
 	{
 		int size = 48;
+		int counter = (*ptr)->getSprite().getTexture()->getSize().x / size;
 		sf::Sprite sprite = (*ptr)->getSprite();
 		sf::IntRect rectSourceSprite = (*ptr)->getSprite().getTextureRect();
 		if (healClock.getElapsedTime().asSeconds() > animationSpeed)
@@ -84,6 +86,7 @@ void Animations::autoAttacAnim(std::vector<std::shared_ptr<AutoAttack>>&autoAtta
 	for (ptr = autoAttackList.begin(); ptr != autoAttackList.end(); ptr++)
 	{
 		int size = 48;
+		int counter = (*ptr)->getSprite().getTexture()->getSize().x / size;
 		sf::Sprite sprite = (*ptr)->getSprite();
 		sf::IntRect rectSourceSprite = (*ptr)->getSprite().getTextureRect();
 		if (autoAttackClock.getElapsedTime().asSeconds() > animationSpeed)
