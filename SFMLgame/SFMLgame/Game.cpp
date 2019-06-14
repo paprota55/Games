@@ -11,7 +11,7 @@ Game::~Game()
 void Game::loop()
 {
 	DataManager manager;
-	manager.loadAll(map, character, hud, monsters.getMonstersList());
+	manager.loadAll(map, character, hud, monsters.getMonstersList(),window.getWindow());
 	hud.createNamesVector();
 
 
@@ -29,34 +29,14 @@ void Game::loop()
 				window.getWindow().close();
 				manager.saveCharacter(character);
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-			{
-				manager.loadMap(map);
-				manager.loadCharacter(character);
-				hud.hudClear();
-				manager.loadHUD(hud);
-			}
+			
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 			{
 				int val = character.getStats().getHealth();
 				character.getStats().setCurrHp(val);
 				character.getStats().setCurrMp(val);
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-			{
-				int newHp = character.getStats().getCurrHp() - 5;
-				character.getStats().setCurrHp(newHp);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-			{
-				int newExp = character.getStats().getExp() + 15;
-				character.getStats().setExp(newExp);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-			{
-				int newMp = character.getStats().getCurrMp() - 5;
-				character.getStats().setCurrMp(newMp);
-			}
+			
 		}
 		if (monsters.getMonstersList().size() == 0)
 		{
