@@ -13,6 +13,7 @@ class DataManager
 	std::string hudTxt;
 	std::string correctTextPositionTxt;
 	std::string monsterTxt;
+	std::string errorLog;
 public:
 	DataManager();
 	~DataManager();
@@ -25,7 +26,7 @@ public:
 	void loadHUD(HUD &);
 	void loadTextHud(HUD &);
 	void loadMonsters(std::vector<std::shared_ptr<Monster>>&);
-	void loadAll(Map&, Character &, HUD &, std::vector<std::shared_ptr<Monster>>&);
+	void loadAll(Map&, Character &, HUD &, std::vector<std::shared_ptr<Monster>>&,sf::RenderWindow&);
 
 	void saveCharacter(Character &);
 	void saveStatistics(Statistics &, std::fstream &);

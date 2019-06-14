@@ -9,6 +9,7 @@ DataManager::DataManager()
 	hudTxt = "HUD/hudCFG.txt";
 	correctTextPositionTxt = "Fonts/correctPos.txt";
 	monsterTxt = "monsters/monsterCFG.txt";
+	errorLog = "ERROR_LOG.txt";
 }
 
 DataManager::~DataManager()
@@ -28,7 +29,7 @@ void DataManager::loadMap(Map &map)
 void DataManager::mapFloorCfg(std::string & floorName, int & height, int & width, int &size)
 {
 	std::fstream file;
-	file.open(mapNameTxt);
+	file.open(mapNameTxt, std::ios::in);
 	if (file.good())
 	{
 		if (file.is_open())
@@ -39,6 +40,16 @@ void DataManager::mapFloorCfg(std::string & floorName, int & height, int & width
 			file >> floorName;
 			file.close();
 		}
+		else
+		{
+			std::string except = "File floorCFG.txt could not be opened.\nGo to folder maps and check file.\n If you haven't file or you don't know what to do, copy file floorCFG.txt from folder main to this location.\n";
+			throw except;
+		}
+	}
+	else
+	{
+		std::string except = "File floorCFG.txt have unexpected error.\nGo to folder maps and check file.\n If you haven't file or you don't know what to do, copy file floorCFG.txt from folder main to this location.\n";
+		throw except;
 	}
 }
 
@@ -47,7 +58,7 @@ void DataManager::loadCharacter(Character & character)
 	std::fstream file;
 	std::string textureName;
 	sf::Vector2f position;
-	file.open(characterTxt);
+	file.open(characterTxt, std::ios::in);
 	if (file.good())
 	{
 		if (file.is_open())
@@ -69,6 +80,16 @@ void DataManager::loadCharacter(Character & character)
 			loadStatistics(character.getStats(), file);
 			file.close();
 		}
+		else
+		{
+			int except = 1;
+			throw except;
+		}
+	}
+	else
+	{
+		int except = 1;
+		throw except;
 	}
 }
 
@@ -105,7 +126,7 @@ void DataManager::loadStatistics(Statistics & stats, std::fstream & file)
 void DataManager::loadObjects(std::vector<std::shared_ptr<MapElement>>& objectsUnprotected, std::vector<std::shared_ptr<MapElement>>& objectsProtected)
 {
 	std::fstream file;
-	file.open(objectsTxt);
+	file.open(objectsTxt, std::ios::in);
 	std::string textureName;
 	sf::IntRect objectRect;
 	int posX, posY, _protected, rotation;
@@ -134,6 +155,16 @@ void DataManager::loadObjects(std::vector<std::shared_ptr<MapElement>>& objectsU
 			}
 			file.close();
 		}
+		else
+		{
+			std::string except = "File objectCFG.txt could not be opened.\nGo to folder objects and check file.\n If you haven't file or you don't know what to do, copy file objectCFG.txt from folder main to this location.\n";
+			throw except;
+		}
+	}
+	else
+	{
+		std::string except = "File objectCFG.txt have unexpected error.\nGo to folder objects and check file.\n If you haven't file or you don't know what to do, copy file objectCFG.txt from folder main to this location.\n";
+		throw except;
 	}
 }
 
@@ -145,7 +176,7 @@ void DataManager::loadHUD(HUD &hud)
 	int posX, posY;
 	
 
-	file.open(hudTxt);
+	file.open(hudTxt, std::ios::in);
 	if (file.good())
 	{
 		if (file.is_open())
@@ -163,6 +194,16 @@ void DataManager::loadHUD(HUD &hud)
 			}
 			file.close();
 		}
+		else
+		{
+			std::string except = "File hudCFG.txt could not be opened.\nGo to folder HUD and check file.\n If you haven't file or you don't know what to do, copy file hudCFG.txt from folder main to this location.\n";
+			throw except;
+		}
+	}
+	else
+	{
+		std::string except = "File hudCFG.txt have unexpected error.\nGo to folder HUD and check file.\n If you haven't file or you don't know what to do, copy file hudCFG.txt from folder main to this location.\n";
+		throw except;
 	}
 	loadTextHud(hud);
 }
@@ -172,7 +213,7 @@ void DataManager::loadTextHud(HUD &hud)
 	std::fstream file;
 	int posX, posY;
 
-	file.open(correctTextPositionTxt);
+	file.open(correctTextPositionTxt, std::ios::in);
 
 	if (file.good())
 	{
@@ -185,13 +226,25 @@ void DataManager::loadTextHud(HUD &hud)
 			}
 			file.close();
 		}
+		else
+		{
+			std::string except = "File correctPos.txt could not be opened.\nGo to folder Fonts and check file.\n If you haven't file or you don't know what to do, copy file correctPos.txt from folder main to this location.\n";
+			throw except;
+		}
 	}
+	else
+	{
+		std::string except = "File correctPos.txt have unexpected error.\nGo to folder Fonts and check file.\n If you haven't file or you don't know what to do, copy file correctPos.txt from folder main to this location.\n";
+		throw except;
+	}
+
+
 }
 
 void DataManager::loadMonsters(std::vector<std::shared_ptr<Monster>>&monsterList)
 {
 	std::fstream file;
-	file.open(monsterTxt);
+	file.open(monsterTxt, std::ios::in);
 	std::string textureName;
 	sf::IntRect objectRect;
 	int posX, posY,hp,exp,attack,follow;
@@ -211,10 +264,20 @@ void DataManager::loadMonsters(std::vector<std::shared_ptr<Monster>>&monsterList
 			}
 			file.close();
 		}
+		else
+		{
+			std::string except = "File monsterCFG.txt could not be opened.\nGo to folder monsters and check file.\n If you haven't file or you don't know what to do, copy file monsterCFG.txt from folder main to this location.\n";
+			throw except;
+		}
+	}
+	else
+	{
+		std::string except = "File monsterCFG.txt have unexpected error.\nGo to folder monsters and check file.\n If you haven't file or you don't know what to do, copy file monsterCFG.txt from folder main to this location.\n";
+		throw except;
 	}
 }
 
-void DataManager::loadAll(Map &map, Character &character, HUD &hud, std::vector<std::shared_ptr<Monster>>&monsters)
+void DataManager::loadAll(Map &map, Character &character, HUD &hud, std::vector<std::shared_ptr<Monster>>&monsters,sf::RenderWindow& window)
 {
 	try
 	{
@@ -223,16 +286,55 @@ void DataManager::loadAll(Map &map, Character &character, HUD &hud, std::vector<
 		loadHUD(hud);
 		loadMonsters(monsters);
 	}
-	catch(std::string)
+	catch(std::string except)
 	{
-
+		std::fstream file;
+		file.open(errorLog, std::ios::out);
+		file << except;
+		file.close();
+		window.close();
+		std::cout << "Check ERROR_LOG in game folder\n";
+		system("Pause");
+		system("start ERROR_LOG.txt");
+		exit(1);
+	}
+	catch (int except)
+	{
+		std::fstream file;
+		file.open(characterTxt, std::ios::out);
+		file << "outfits/1.png\n";
+		for (int i = 0; i < 4; i++)
+		{
+			file << 48 << " ";
+		}
+		file << "\n";
+		file << 3300 << " ";
+		file << 3300 << "\n";
+		file << 3.5<<"\n";
+		file << 1 << "\n";
+		file << 200 << " " << 200 << "\n";
+		file << 200 << " " << 200 << "\n";
+		file << 200 << " " << 0 << "\n";
+		file << 1 << "\n";
+		file << 1 << "\n";
+		file << 1 << "\n";
+		file << 0 << "\n";
+		file.close();
+		window.close();
+		file.open(errorLog, std::ios::out);
+		file<<"File characterCFG.txt have unexpected problem so we need to delete your character status and create new.\nI apologise for problems.";
+		file.close();
+		std::cout << "Check ERROR_LOG in game folder\n";
+		system("Pause");
+		system("start ERROR_LOG.txt");
+		exit(1);
 	}
 }
 
 void DataManager::saveCharacter(Character & character)
 {
 	std::fstream file;
-	file.open(characterTxt);
+	file.open(characterTxt,std::ios::out);
 	if (file.good())
 	{
 		if (file.is_open())
