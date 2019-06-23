@@ -105,11 +105,7 @@ sf::Vector2f Character::getPosition()
 void Character::drawCharacter(sf::RenderWindow & window)
 {
 	window.draw(sprite);
-	drawCoordinates(window);
-}
-
-void Character::drawCoordinates(sf::RenderWindow & window)
-{
+	//drawCoordinates(window);
 }
 
 bool Character::collision(std::vector<std::shared_ptr<MapElement>> elements, std::vector<std::shared_ptr<Monster>> monsterList)

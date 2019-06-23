@@ -43,7 +43,6 @@ public:
 
 	//drawing
 	void drawCharacter(sf::RenderWindow &window);
-	void drawCoordinates(sf::RenderWindow &window);
 
 	bool collision(std::vector<std::shared_ptr<MapElement>>, std::vector<std::shared_ptr<Monster>>);
 };

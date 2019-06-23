@@ -9,4 +9,4 @@ HUD/choice.png 0 0 180 69 500 390
 HUD/plus2.png 0 0 33 33 0 -100
 HUD/speed.png 0 0 33 33 50 -100
 HUD/wybuch.png 0 0 33 33 100 -100
-HUD/Blue.png 0 0 400 80 200 500
+HUD/Blue.png 0 0 400 80 200 520

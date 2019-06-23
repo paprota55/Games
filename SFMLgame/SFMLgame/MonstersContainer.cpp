@@ -111,9 +111,9 @@ void MonstersContainer::deadMonster(Statistics &stats, StatisticsEvents& events)
 		{
 			events.increaseExp(stats, monstersList.at(i)->getExp());
 			monstersList.erase(monstersList.begin() + i);
+			size--;
 		}
 	}
-	
 }
 
 void MonstersContainer::checkCollisions(Skills &skills, Statistics &stats)

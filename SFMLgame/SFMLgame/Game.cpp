@@ -17,27 +17,6 @@ void Game::loop()
 
 	while (window.getWindow().isOpen())
 	{
-		while (window.getWindow().pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				window.getWindow().close();
-				manager.saveCharacter(character);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-			{
-				window.getWindow().close();
-				manager.saveCharacter(character);
-			}
-			
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-			{
-				int val = character.getStats().getHealth();
-				character.getStats().setCurrHp(val);
-				character.getStats().setCurrMp(val);
-			}
-			
-		}
 		if (monsters.getMonstersList().size() == 0)
 		{
 			manager.loadMonsters(monsters.getMonstersList());
@@ -74,5 +53,14 @@ void Game::loop()
 		monsters.drawMonsters(window.getWindow());
 		window.setMapView();
 		window.getWindow().display();
+
+		while (window.getWindow().pollEvent(event))
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			{
+				window.getWindow().close();
+				manager.saveCharacter(character);
+			}
+		}
 	}
 }

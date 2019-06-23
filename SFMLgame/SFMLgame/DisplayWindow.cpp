@@ -1,7 +1,7 @@
 #include "DisplayWindow.h"
 #include "DataManager.h"
 
-DisplayWindow::DisplayWindow():width(1920),height(1080),window(sf::VideoMode(width, height), "Fantasy World", sf::Style::Fullscreen)
+DisplayWindow::DisplayWindow():width(1920),height(1080),window(sf::VideoMode(width, height), "Fantasy World",sf::Style::Fullscreen)
 {	
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);

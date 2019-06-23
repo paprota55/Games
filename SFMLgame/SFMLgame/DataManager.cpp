@@ -259,7 +259,7 @@ void DataManager::loadMonsters(std::vector<std::shared_ptr<Monster>>&monsterList
 				file >> objectRect.top;
 				file >> objectRect.width;
 				file >> objectRect.height;
-				file >> posX >> posY >> hp >> exp >> attack >> follow;
+				file >> posX >> posY >> hp >> exp >> attack;
 				monsterList.insert(monsterList.begin(), std::shared_ptr<Monster>(new Monster(textureName, objectRect, hp, exp, attack, follow, sf::Vector2f(posX, posY))));
 			}
 			file.close();
